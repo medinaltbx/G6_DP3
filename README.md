@@ -2,10 +2,13 @@
 
 ## To do:
 
-* Buscar nuevas variables
-* Exploración de variables --> Feature engineering
-* Limpieza de datos
-* Clustering
-* Modelo clasificador
-* Arquitectura final
+* Buscar nuevas variables, estudio de riesgos --> Luis
+* Limpieza de datos --> Cristian
+* Exploración de variables / Feature engineering --> Masa
+* Clustering --> Chema, Ricardo
+* Modelo clasificador --> Cristian 
+* Arquitectura final --> Masa, Cristian
+    - Contenerizacion
+    - Escalabilidad
 * Presentación
+* Hacer el ReadMe
