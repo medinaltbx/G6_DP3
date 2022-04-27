@@ -29,4 +29,6 @@ merged = demo_perf.merge(previous, on="customerid", how="left")
 print('MERGED')
 print(merged)
 
+merged.to_csv(r"C:\Users\Cristian\Documents\repos\G6_DP3\data\merged_data\train\merged_train.csv",sep=';',index=False)
+
 
