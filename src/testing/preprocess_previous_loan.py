@@ -17,5 +17,4 @@ def manage_previous(previous):
     res = previous.groupby("customerid").apply(get_values).reset_index()
     res['times_loaned'], res['times_late'], res['times_referred'] = zip(*res[0])
     del res[0]
-    print(res)
-    exit(0)
+    return res
