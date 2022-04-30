@@ -6,7 +6,7 @@ import pickle
 pd.set_option("display.width",None)
 
 df = pd.read_csv(r"https://raw.githubusercontent.com/medinaltbx/G6_DP3/master/data/merged_data/train/merged_train.csv",sep=';')
-df.drop(["customerid","longitude_gps", "latitude_gps"],axis=1,inplace=True)
+df.drop(["customerid"],axis=1,inplace=True)
 str_cols = ["loanamount", "totaldue", "Commision"]
 # Remove decimals from string
 for c in str_cols:
