@@ -36,4 +36,9 @@
     - Contenerizacion
     - Escalabilidad
 * Presentación
-* Hacer el ReadMe
+* Hacer el ReadMe --> Cristian
+
+EXPLORACION DE VARIABLES:
+
+- Feature importance: Obtener las 10 variables más importantes y filtrar marged_train para que solo tenga esas variables, nombrar como "filtered_merged.csv"
+- PCA: Obtener PCA y crear nuevo dataset "merged_pca.csv". Ha de contener customerid, variables obtenidas en pca y variable target (is_good_bad)
