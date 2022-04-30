@@ -14,15 +14,17 @@
 ├───notebooks                 # Notebooks utilizados en clustering y feature selection
 │
 └───src                       # Código generado
-    ├───model
-    │       baseline.py       # Modelo baseline
-    │       grid_search.py    # Obtención de mejores hiperparámetros
-    │
-    ├───preprocess            
-    │   │   merge_files.py    # Generación de datos input etiquetados
-    │   │   preprocess.py     # utils
-    │
-    └───testing               # Carpeta con scripts de prueba
+│   ├───model
+│   │       baseline.py       # Modelo baseline
+│   │       grid_search.py    # Obtención de mejores hiperparámetros
+│   │
+│   ├───preprocess            
+│   │   │   merge_files.py    # Generación de datos input etiquetados
+│   │   │   preprocess.py     # utils
+│   │
+│   └───testing               # Carpeta con scripts de prueba
+│
+└───info                      # Carpeta con información general 
 ```
 
 ## To do:
