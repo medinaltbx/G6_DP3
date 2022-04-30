@@ -36,8 +36,11 @@ for set in ["train","test"]:
     #     merged[c] = merged[c].str.split(',').str[0]
 
     merged[str_cols] = merged[str_cols].apply(pd.to_numeric)
+    with pd.option_context('display.max_rows', None):
+        print(merged.dtypes)
     print(merged.dtypes)
 
     print(merged)
-    merged.to_csv(rf"C:\Users\Cristian Medina\Documents\EDEM\G6_DP3\data\merged_data\{set}\merged_{set}.csv",sep=';',index=False)
-    exit(0)
+    path = rf"C:\Users\Cristian Medina\Documents\EDEM\G6_DP3\data\merged_data\{set}\merged_{set}.csv"
+    print(path)
+    merged.to_csv(path,sep=';',index=False)
