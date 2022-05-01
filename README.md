@@ -44,3 +44,8 @@ EXPLORACION DE VARIABLES:
 
 - Feature importance: Obtener las 10 variables más importantes y filtrar marged_train para que solo tenga esas variables, nombrar como "filtered_merged.csv"
 - PCA: Obtener PCA y crear nuevo dataset "merged_pca.csv". Ha de contener customerid, variables obtenidas en pca y variable target (is_good_bad)
+
+CLUSTERING
+
++ Elección de un numero óptimo de clusters mediante el método elbow el número correcto de clusters.
++ Segmentación mediante el metodo K-means.
