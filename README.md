@@ -49,3 +49,5 @@ CLUSTERING
 
 + Elección de un numero óptimo de clusters mediante el método elbow el número correcto de clusters.
 + Segmentación mediante el metodo K-means.
+
+![](flowchart.drawio.png)
