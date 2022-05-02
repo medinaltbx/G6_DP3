@@ -11,7 +11,7 @@
 │   │
 │   └───models                # Modelos serializados
 │
-├───notebooks                 # Notebooks utilizados en clustering y feature selection
+├───notebooks                 # Notebooks utilizados en clustering, feature selection y PCA
 │
 └───src                       # Código generado
 │   ├───model
@@ -22,9 +22,9 @@
 │   │   │   merge_files.py    # Generación de datos input etiquetados
 │   │   │   preprocess.py     # utils
 │   │
-│   └───testing               # Carpeta con scripts de prueba
+│   └───testing               # Scripts de prueba
 │
-└───info                      # Carpeta con información general 
+└───info                      # Información general 
 ```
 
 ## To do:
