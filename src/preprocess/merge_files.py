@@ -63,8 +63,7 @@ categorical = ["bank_account_type","bank_name_clients","bank_branch_clients","em
 concat = pd.get_dummies(concat, columns=categorical)
 
 train, test =  concat[concat.good_bad_flag.notnull()], concat[~concat.good_bad_flag.notnull()].drop(['good_bad_flag'],axis=1)
-print(train)
-print(test)
+train, test = train.fillna(0), test.fillna(0)
 
 path = rf"C:\Users\Cristian Medina\Documents\EDEM\G6_DP3\data\input\merged_data\{set}\merged_{set}.csv"
 train.to_csv(rf"C:\Users\Cristian Medina\Documents\EDEM\G6_DP3\data\input\merged_data\train\merged_train.csv",sep=';',index=False)
