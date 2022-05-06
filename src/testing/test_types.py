@@ -1,6 +1,10 @@
+import glob, os
 import pandas as pd
 
-merged = pd.read_csv(r"C:\Users\Cristian Medina\Documents\EDEM\G6_DP3\data\merged_data\test\merged_test.csv",sep=';')
+for set in ["train","test"]:
+    directory_path = rf"C:\Users\Cristian Medina\Documents\EDEM\G6_DP3\data\input\raw_data\{set}"
+    csv_files = glob.glob(os.path.join(directory_path, "*.csv"))
 
-with pd.option_context('display.max_rows', None):
-    print(merged.dtypes)
+    for f in csv_files:
+        x = pd.read_csv(f, sep=',')
+        print(f, x.shape)
