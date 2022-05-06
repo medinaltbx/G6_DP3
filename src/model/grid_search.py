@@ -8,8 +8,9 @@ import pickle
 
 pd.set_option("display.width",None)
 
+dataset = "top_10"
 
-df = pd.read_csv(r"https://raw.githubusercontent.com/medinaltbx/G6_DP3/master/data/input/merged_data/train/merged_train.csv",sep=';')
+df = pd.read_csv(rf"https://raw.githubusercontent.com/medinaltbx/G6_DP3/master/data/input/merged_data/train/{dataset}_train.csv",sep=';')
 df.drop(["customerid"],axis=1,inplace=True)
 X, y = df.drop(["good_bad_flag"],axis=1), df['good_bad_flag']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
@@ -54,5 +55,5 @@ best_hyperparams = fmin(fn = objective,
 print("The best hyperparameters are : ","\n")
 print(best_hyperparams)
 
-with open(r"C:\Users\Cristian Medina\Documents\EDEM\G6_DP3\data\hp\all_variables_best_hp.pkl","wb") as file:
+with open(rf"C:\Users\Cristian Medina\Documents\EDEM\G6_DP3\data\hp\{dataset}_best_hp.pkl","wb") as file:
     pickle.dump(best_hyperparams, file)

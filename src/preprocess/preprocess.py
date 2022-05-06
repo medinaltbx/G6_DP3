@@ -1,6 +1,8 @@
 import pandas as pd
 from datetime import datetime
 import numpy as np
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+import pickle
 
 def manage_current(current):
     current.replace({'good_bad_flag': {'Good': 1, 'Bad': 0}},inplace=True)
@@ -18,7 +20,8 @@ def manage_demograficos(demograficos):
     del demograficos['birthdate']
     demograficos.replace(np.nan, "UNKNOWN",inplace=True)
     categorical_cols = ['bank_account_type', 'bank_name_clients', 'bank_branch_clients', 'employment_status_clients','level_of_education_clients']
-    return pd.get_dummies(demograficos, columns=categorical_cols)
+    # return pd.get_dummies(demograficos, columns=categorical_cols)
+    return demograficos
 
 def get_values(df):
     times_loaned = len(df)
@@ -37,4 +40,27 @@ def manage_previous(previous):
     del res[0]
     return res
 
+def dummyEncode(df, set):
+    if set == "train":
+        dc = {}
+        columnsToEncode = ["bank_account_type","bank_name_clients","bank_branch_clients","employment_status_clients","level_of_education_clients"]
+        for feature in columnsToEncode:
+            try:
+                print('DETNTRO DEL TRY')
+                ohe = OneHotEncoder()
+                print(ohe)
+                print(df[feature])
+                df = ohe.fit_transform(df[feature])
+                print(df)
+                exit(0)
+                dc[feature] = ohe
+            except:
+                print('Error encoding ' + feature)
 
+        with open(rf"C:\Users\Cristian Medina\Documents\EDEM\G6_DP3\data\encoder\encoding_dc.pkl", "wb") as file:
+            pickle.dump(dc, file)
+        return df
+
+    else:
+        dc = pickle.load(open(rf"C:\Users\Cristian Medina\Documents\EDEM\G6_DP3\data\encoder\encoding_dc.pkl", "wb"))
+        print(dc)
