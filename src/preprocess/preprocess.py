@@ -1,7 +1,7 @@
 import pandas as pd
 from datetime import datetime
 import numpy as np
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder
 import pickle
 
 def manage_current(current):
