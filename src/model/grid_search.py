@@ -1,6 +1,6 @@
 import pandas as pd
 from numpy.ma.bench import timer
-from sklearn.model_selection import train_test_split, StratifiedKFold, RandomizedSearchCV
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import xgboost as xgb
 from hyperopt import STATUS_OK, Trials, fmin, hp, tpe
