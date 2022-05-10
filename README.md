@@ -3,28 +3,28 @@
 ## Project structure
 
 ```
-├───data                      # Contiene todos los datos usados en el proyecto
-│   ├───hp                    # Mejores hiperparametros por modelo
-│   ├───input                 
-│   │   ├───merged_data       # Datos preprocesados
-│   │   └───raw_data          # Datos en crudo
+G6_DP3
+├───data                            # Datos usados en el proyecto
 │   │
-│   └───models                # Modelos serializados
-│
-├───notebooks                 # Notebooks utilizados en clustering, feature selection y PCA
-│
-└───src                       # Código generado
-│   ├───model
-│   │       baseline.py       # Modelo baseline
-│   │       grid_search.py    # Obtención de mejores hiperparámetros
+│   ├───input
+│   │   ├───merged_data             # Conjuntos de datos de entrada de los modelos 
+│   │   │
+│   │   └───raw_data                # Conjuntos de datos input en crudo
 │   │
-│   ├───preprocess            
-│   │   │   merge_files.py    # Generación de datos input etiquetados
-│   │   │   preprocess.py     # utils
-│   │
-│   └───testing               # Scripts de prueba
+│   └───output                      # Predicción de test y modelo final
 │
-└───info                      # Información general 
+│
+├───info                            # Información general del proyecto
+│
+├───notebooks                                         
+│   ├───modeling                    # Notebooks de generación y uso de modelos
+│   │
+│   ├───preprocess                  # Notebooks de preprocesado de datos input en crudo
+│   │
+│   └───transformations             # Notebooks de transformación de datasets input de los modelos
+│
+└───src                             # Códigos fuente de prueba
+
 ```
 
 ## Introducción:
