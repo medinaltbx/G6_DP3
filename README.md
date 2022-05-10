@@ -109,4 +109,8 @@ De esta forma generamos tanto merged_train.csv como merged_test.csv. Podemos rep
 
 ## 3. Entrenamiento y modelo final
 
+Una vez que contamos con todos los inputs necesarios, pasaremos a entrenar los modelos y medir sus errores con el conjunto de validación. En ``work/notebooks/modeling/grid_search.ipynb`` realizamos la búsqueda de hiperparámetros y entrenamos los modelos. Finalmente seleccionamos el mejor modelo siguiendo la estrategia mencionada en apartados anteriores y lo serializamos en la ruta `` work/data/output/best_model.pkl``
+
 ## 4. Predicción de test
+
+Finalmente, tan sólo nos queda realizar la predicción final sobre el conjunto de test. Si ejecutamos todas las celdas alojadas en ``work/notebooks/modeling/test_predictions.ipynb`` generamos un dataset que cuenta con el customerid y la predicción de si va a ser capaz de devolver el préstamo o no. Esta predicción final se encuentra en ``work/data/output/test_prediction.csv``. 
