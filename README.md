@@ -77,11 +77,36 @@ Una vez obtenidos los nuevos datasets, pasaremos a entrenar cinco modelos hacien
 
 Posteriormente, comparamos todos los modelos haciendo uso de la métrica _accuracy_ y obtenemos aquel que cuente con la puntuación más alta. Con este modelo final realizaremos las predicciones sobre el conjunto de test correspondiente.
 
-## 1. Ingesta y transformación
+## 1. Ingesta y preprocesado
 
 En primer lugar, para poder realizar cualquier tipo de análisis o clasificación debemos de preprocesar nuestros datos input. Contamos con tres datasets principales, los cuales a su vez se subdividen en entrenamiento y test:
 
-* *_datos_demograficos.csv : Información sobre el cliente (edad, empleo, estudios, etc.).
-* *_performance.csv : Conjunto de datos con préstamos a clasificar. 
-* *_previous_loan.csv : Préstamos históricos. Puede contener información de clientes presentes en *_performance.csv o no.
+* ***_datos_demograficos.csv** : Información sobre el cliente (edad, empleo, estudios, etc.).
+* ***_performance.csv** : Conjunto de datos con préstamos a clasificar.
+* ***_previous_loan.csv** : Préstamos históricos. Puede contener información de clientes presentes en *_performance.csv o no.
 
+La estrategia a seguir es la siguiente:
+
+1. Realizamos un left join sobre performances y datos_demograficos. En este punto ya hemos unificado ambos datasets.
+2. Transformamos el dataset previous_loan. Para cada entrada del mismo, generamos dos variables nuevas:
+   1. **minutes_late**: Minutos de retraso en la devolución del prestamo. Calculada a partir de la diferencia de las columnas columnas "firstpaiddate" y "firstduedate".
+   2. **is_late**: Indica si se ha retrasado en el pago. 1 si se ha retrasado y 0 en caso contrario.
+3. Con estas nuevas columnas, agrupamos el dataset por cliente y generamos tres nuevas variables:
+   1. **times_loaned**: Número de veces que el cliente ha recibido un préstamo con anterioridad.
+   2. **times_late**: Número de veces que el cliente ha devuelto su préstamo tarde.
+   3. **times_referred**: Número de veces que el cliente ha sido referido por otro cliente.
+4. Una vez obtenidas estas columnas, realizamos un outer join con el dataset generado previamente, resultando en el dataset final **merged_*.csv*.
+
+De esta forma generamos tanto merged_train.csv como merged_test.csv. Podemos replicarlo dirigiéndonos a ``work/notebooks/preprocess/raw_data.ipynb`` y ejecutando todas las celdas.
+
+## 2. Transformación del input
+
+### Clustering
+
+### Feature importances
+
+### PCA
+
+## 3. Entrenamiento y modelo final
+
+## 4. Predicción de test
