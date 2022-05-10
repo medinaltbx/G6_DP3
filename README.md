@@ -1,6 +1,7 @@
 # G6_DP3
+## Data Project 3 Evaluación del Riesgo Crediticio. - Master Data Analytics EDEM 2022
 
-## Project structure
+## Estructura del proyecto
 
 ```
 G6_DP3
