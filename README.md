@@ -104,6 +104,9 @@ De esta forma generamos tanto merged_train.csv como merged_test.csv. Podemos rep
 ### Clustering
 
 ### Feature importances
+En primer lugar para realizar el Feature importances tenemos que descargar varias librerias en python(XgBoost, pandas,maplotlib), en segundo lugar llamaremos al archivo que se haya en github el cual cargaremos y haremos una limpieza de algunas variables para poder realizar el profiling de los datos el cual nos servirá para hacer algunos análisis de las variables.
+
+En segundo lugar, realizaremos el modelo en xgboost el cual nos servirá para hayar las 10 variables más importantes y posteriormente crear un dataset con esas variables, dataset el cual utilizaremos para hacer el modelo final.
 
 ### PCA
 
