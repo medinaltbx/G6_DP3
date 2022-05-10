@@ -52,7 +52,7 @@ Completamos el campo "Password or token" con el token "**dp**", indicado en el a
 
 ![](info/readme_imgs/jupyter_structure.png)
 
-### Arquitectura de la solución:
+## Arquitectura de la solución:
 
 ![](info/readme_imgs/arch.png)
 
@@ -61,7 +61,21 @@ En primer lugar realizaremos una transformación y limpieza de los datos, de los
 * **merged_train.csv**: Conjunto de datos con el cual entrenaremos y testearemos los modelos. Será subdividido en entrenamiento (75%) y validación (25%).
 * **merged_test.csv**: Conjunto de datos sobre el que se realizará la clasificación con el modelo que obtenda un mejor desempeño.
 
+Transformamos los datos de ambos sets con los notebooks de transformación. En ellos, se realizará un análisis y se generarán tres datasets nuevos, los cuales también se subdividirán en entrenamiento y test (ambos representados por *):
 
+* **cluster_*** : Contiene los mismos datos que merged_*, añadiendo el resultado obtenido en la clusterización.
+* **top_10_***: Contiene las diez variables más significativas haciendo uso del atributo "feature_importances" del módulo XGBoostClassifier.
+* **pca_***: Dataset con nuevas variables obtenidas haciendo uso del método PCA.
+
+Una vez obtenidos los nuevos datasets, pasaremos a entrenar cinco modelos haciendo uso de la librería XGBoost y, en concreto, XGBoostClassifier. Todos los modelos son sometidos previamente a una búsqueda de los mejores hiperparámetros realizando el método GridSearch Cross Validation, a excepción del modelo baseline:
+
+* **baseline_model**: Entrenado con merged_train.csv.
+* **complete_model**: Entrenado con merged_train.csv .
+* **cluster_model**: Entrenado con cluster_train.csv.
+* **top_10_model**: Entrenado con top_10_train.csv.
+* **pca_model**: Entrenado con pca_train.csv.
+
+Posteriormente, comparamos todos los modelos haciendo uso de la métrica _accuracy_ y obtenemos aquel que cuente con la puntuación más alta. Con este modelo final realizaremos las predicciones sobre el conjunto de test correspondiente.
 
 ## 1. Ingesta y transformación
 
