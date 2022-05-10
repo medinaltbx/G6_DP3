@@ -27,27 +27,30 @@
 └───info                      # Información general 
 ```
 
-## To do:
+## Introducción:
 
-* Buscar nuevas variables, estudio de riesgos --> Luis
-* Limpieza de datos --> Cristian
-* Exploración de variables / Feature engineering --> Masa
-* Clustering --> Chema, Ricardo
-* Modelo clasificador --> Cristian 
-* Arquitectura final --> Masa, Cristian
-    - Contenerizacion
-    - Escalabilidad
-* Presentación
-* Hacer el ReadMe --> Cristian
+## 0. Requisitos
 
-EXPLORACION DE VARIABLES:
+Los únicos requisitos necesarios a la hora de reproducir la solución es tener instalado Docker y Git. En primer lugar, clonamos este mismo repositorio:
+```
+git clone https://github.com/medinaltbx/G6_DP3.git
+```
 
-- Feature importance: Obtener las 10 variables más importantes y filtrar marged_train para que solo tenga esas variables, nombrar como "filtered_merged.csv"
-- PCA: Obtener PCA y crear nuevo dataset "merged_pca.csv". Ha de contener customerid, variables obtenidas en pca y variable target (is_good_bad)
+Una vez clonado el repositorio, accedemos al mismo y creamos el contenedor el cual contará con el entorno Jupyter:
+```
+docker-compose up -d --build 
+```
 
-CLUSTERING
+Esperamos unos segundos a que carguen todos los componentes y nos dirigimos a la siguiente dirección usando cualquier navegador:
+``
+http://localhost:8888/
+``
 
-+ Elección de un numero óptimo de clusters mediante el método elbow el número correcto de clusters.
-+ Segmentación mediante el metodo K-means.
+![](info/readme_imgs/jupyter_login.png)
 
-![](info/flowchart.drawio.png)
+Completamos el campo "Password or token" con el token "**dp**", indicado en el archivo docker-compose.yml. Si todo ha ido bien, contaremos con acceso al proyecto cargado en el entorno Jupyter. Navegando dentro de la carpeta "work", observaremos la misma distribución de archivos y directorios que en el repositorio local previamente clonado:
+
+![](info/readme_imgs/jupyter_structure.png)
+
+## 1. Ingesta y transformación
+
