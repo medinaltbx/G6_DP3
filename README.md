@@ -29,7 +29,7 @@
 
 ## Introducción:
 
-## 0. Requisitos
+## 0. Requisitos previos
 
 Los únicos requisitos necesarios a la hora de reproducir la solución es tener instalado Docker y Git. En primer lugar, clonamos este mismo repositorio:
 ```
@@ -52,5 +52,22 @@ Completamos el campo "Password or token" con el token "**dp**", indicado en el a
 
 ![](info/readme_imgs/jupyter_structure.png)
 
+### Arquitectura de la solución:
+
+![](info/readme_imgs/arch.png)
+
+En primer lugar realizaremos una transformación y limpieza de los datos, de los cuales obtendremos dos sets:
+
+* **merged_train.csv**: Conjunto de datos con el cual entrenaremos y testearemos los modelos. Será subdividido en entrenamiento (75%) y validación (25%).
+* **merged_test.csv**: Conjunto de datos sobre el que se realizará la clasificación con el modelo que obtenda un mejor desempeño.
+
+
+
 ## 1. Ingesta y transformación
+
+En primer lugar, para poder realizar cualquier tipo de análisis o clasificación debemos de preprocesar nuestros datos input. Contamos con tres datasets principales, los cuales a su vez se subdividen en entrenamiento y test:
+
+* *_datos_demograficos.csv : Información sobre el cliente (edad, empleo, estudios, etc.).
+* *_performance.csv : Conjunto de datos con préstamos a clasificar. 
+* *_previous_loan.csv : Préstamos históricos. Puede contener información de clientes presentes en *_performance.csv o no.
 
