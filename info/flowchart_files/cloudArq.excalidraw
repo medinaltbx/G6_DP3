@@ -40,8 +40,8 @@
     },
     {
       "type": "text",
-      "version": 48,
-      "versionNonce": 1900360161,
+      "version": 53,
+      "versionNonce": 1371791695,
       "isDeleted": false,
       "id": "95bquthbxyEM1CvpydnwS",
       "fillStyle": "hachure",
@@ -54,7 +54,7 @@
       "y": 589,
       "strokeColor": "#000000",
       "backgroundColor": "transparent",
-      "width": 60,
+      "width": 62,
       "height": 14,
       "seed": 116820193,
       "groupIds": [
@@ -62,10 +62,10 @@
       ],
       "strokeSharpness": "round",
       "boundElements": [],
-      "updated": 1652204499407,
+      "updated": 1652205902984,
       "fontSize": 12,
       "fontFamily": 2,
-      "text": "Best Model",
+      "text": "Final Model",
       "baseline": 11,
       "textAlign": "left",
       "verticalAlign": "top"
@@ -2454,10 +2454,10 @@
     {
       "id": "_nlPmuq847JA5Si90LI4C",
       "type": "arrow",
-      "x": 921,
+      "x": 921.0000000000001,
       "y": 599.8406741573034,
-      "width": 239,
-      "height": 0.1593258426966031,
+      "width": 237.9999999999999,
+      "height": 0.15865920737155648,
       "angle": 0,
       "strokeColor": "#000000",
       "backgroundColor": "transparent",
@@ -2469,19 +2469,19 @@
       "groupIds": [],
       "strokeSharpness": "round",
       "seed": 1417486113,
-      "version": 428,
-      "versionNonce": 227383663,
+      "version": 430,
+      "versionNonce": 1965441231,
       "isDeleted": false,
       "boundElements": null,
-      "updated": 1652204614617,
+      "updated": 1652205898253,
       "points": [
         [
           0,
           0
         ],
         [
-          239,
-          0.1593258426966031
+          237.9999999999999,
+          0.15865920737155648
         ]
       ],
       "lastCommittedPoint": null,
@@ -3251,7 +3251,7 @@
   ],
   "appState": {
     "gridSize": 20,
-    "viewBackgroundColor": "transparent"
+    "viewBackgroundColor": "#ffffff"
   },
   "files": {}
 }
