@@ -1,10 +1,11 @@
 version: "3.7"
 services:
-  node:
-    image: continuumio/anaconda3
-    command:
-      - jupyter notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root
+  datascience-demo:
+    image: jupyter/datascience-notebook:r-4.0.3
+    environment:
+      - JUPYTER_TOKEN=dp
     volumes:
-      - ./notebooks:/notebooks
+      - ./:/home/jovyan/work
     ports:
       - 8888:8888
+    container_name: datascience-demo
