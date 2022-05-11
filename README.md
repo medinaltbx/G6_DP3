@@ -1,5 +1,5 @@
 # G6_DP3
-## Data Project 3: Evaluación del Riesgo Crediticio. - Master Data Analytics EDEM 2022
+## Data Project 3 Evaluación del Riesgo Crediticio. - Master Data Analytics EDEM 2022
 
 ## Estructura del proyecto
 
@@ -32,7 +32,7 @@ G6_DP3
 
 ## 0. Requisitos previos
 
-El único requisito necesario a la hora de reproducir la solución es instalar [Docker](https://docs.docker.com/engine/install/) y [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) en nuestros dispositivos. Completado este paso, clonamos este mismo repositorio:
+Los únicos requisitos necesarios a la hora de reproducir la solución es tener instalado Docker y Git. En primer lugar, clonamos este mismo repositorio:
 ```
 git clone https://github.com/medinaltbx/G6_DP3.git
 ```
@@ -57,21 +57,21 @@ Completamos el campo "Password or token" con el token "**dp**", indicado en el a
 
 ![](info/readme_imgs/arch.png)
 
-En primer lugar realizaremos una transformación y limpieza de los datos, de los cuales obtendremos dos conjuntos:
+En primer lugar realizaremos una transformación y limpieza de los datos, de los cuales obtendremos dos sets:
 
 * **merged_train.csv**: Conjunto de datos con el cual entrenaremos y testearemos los modelos. Será subdividido en entrenamiento (75%) y validación (25%).
-* **merged_test.csv**: Conjunto de datos sobre el que se realizará la clasificación una vez generado el modelo final.
+* **merged_test.csv**: Conjunto de datos sobre el que se realizará la clasificación con el modelo que obtenda un mejor desempeño.
 
-Transformamos los datos de ambos conjuntos con los notebooks de transformación. En ellos, se realizará un análisis y se generarán tres datasets nuevos, los cuales también se subdividirán en entrenamiento y test (ambos representados por *):
+Transformamos los datos de ambos sets con los notebooks de transformación. En ellos, se realizará un análisis y se generarán tres datasets nuevos, los cuales también se subdividirán en entrenamiento y test (ambos representados por *):
 
-* **cluster_**.csv : Contiene los mismos datos que merged_*.csv, añadiendo el resultado obtenido en la clusterización.
-* **top_10_***.csv: Contiene las diez variables más significativas haciendo uso del atributo "feature_importances" del módulo XGBoostClassifier.
-* **pca_***.csv: Dataset con nuevas variables obtenidas haciendo uso del método PCA.
+* **cluster_*** : Contiene los mismos datos que merged_*, añadiendo el resultado obtenido en la clusterización.
+* **top_10_***: Contiene las diez variables más significativas haciendo uso del atributo "feature_importances" del módulo XGBoostClassifier.
+* **pca_***: Dataset con nuevas variables obtenidas haciendo uso del método PCA.
 
-Una vez obtenidos los nuevos datasets, pasaremos a entrenar cinco modelos haciendo uso del clasificador que nos proporciona la librería XGBoost. Todos los modelos son sometidos previamente a una búsqueda de los mejores [hiperparámetros](https://machinelearningmastery.com/difference-between-a-parameter-and-a-hyperparameter/) realizando el método [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html), a excepción del modelo baseline que utilizaremos como punto de partida:
+Una vez obtenidos los nuevos datasets, pasaremos a entrenar cinco modelos haciendo uso de la librería XGBoost y, en concreto, XGBoostClassifier. Todos los modelos son sometidos previamente a una búsqueda de los mejores hiperparámetros realizando el método GridSearch Cross Validation, a excepción del modelo baseline:
 
 * **baseline_model**: Entrenado con merged_train.csv.
-* **complete_model**: Entrenado con merged_train.csv.
+* **complete_model**: Entrenado con merged_train.csv .
 * **cluster_model**: Entrenado con cluster_train.csv.
 * **top_10_model**: Entrenado con top_10_train.csv.
 * **pca_model**: Entrenado con pca_train.csv.
@@ -86,7 +86,7 @@ En primer lugar, para poder realizar cualquier tipo de análisis o clasificació
 * ***_performance.csv** : Conjunto de datos con préstamos a clasificar.
 * ***_previous_loan.csv** : Préstamos históricos. Puede contener información de clientes presentes en *_performance.csv o no.
 
-### Estrategia de preprocesado:
+La estrategia a seguir es la siguiente:
 
 1. Realizamos un left join sobre performances y datos_demograficos. En este punto ya hemos unificado ambos datasets.
 2. Transformamos el dataset previous_loan. Para cada entrada del mismo, generamos dos variables nuevas:
@@ -104,6 +104,16 @@ De esta forma generamos tanto merged_train.csv como merged_test.csv. Podemos rep
 
 ### Clustering
 
+El objetivo es agrupar un conjunto de objetos tales que los objetos en el mismo grupo (clúster) son más similares entre sí que a los otros grupos. Para ello se utilizará el metodo de partición k-means. 
+
+En primer lugar se importar las librerias que aparecen en el notebook, en caso de no tenerlas es inprescindible descargarlas. El siguiente paso es cargar el dataset "merged_train.csv" para comenzar a trabajar.
+
+Para averiguar el numero de clústeres para realizar k-means se realiza el método 'elbow' el cual mediante una gráfica nos indica cual es el numero de k mas óptimo (El punto donde mas varia la inclinación). En nuestro caso k = 2.
+
+Una vez definido el numero de k´s se aplica el método k-means el cual clasificara cada fila del dataset en uno de los dos clústeres definidos. 
+
+Definidos ya, se añaden los clústeres al dataset.
+
 ### Feature importances
 En primer lugar para realizar el Feature importances tenemos que descargar varias librerias en python(XgBoost, pandas,maplotlib), en segundo lugar llamaremos al archivo que se haya en github el cual cargaremos y haremos una limpieza de algunas variables para poder realizar el profiling de los datos el cual nos servirá para hacer algunos análisis de las variables.
 
@@ -115,6 +125,6 @@ En segundo lugar, realizaremos el modelo en xgboost el cual nos servirá para ha
 
 Una vez que contamos con todos los inputs necesarios, pasaremos a entrenar los modelos y medir sus errores con el conjunto de validación. En ``work/notebooks/modeling/grid_search.ipynb`` realizamos la búsqueda de hiperparámetros y entrenamos los modelos. Finalmente seleccionamos el mejor modelo siguiendo la estrategia mencionada en apartados anteriores y lo serializamos en la ruta `` work/data/output/best_model.pkl``
 
-## 4. Predicción de conjunto de test
+## 4. Predicción de test
 
 Finalmente, tan sólo nos queda realizar la predicción final sobre el conjunto de test. Si ejecutamos todas las celdas alojadas en ``work/notebooks/modeling/test_predictions.ipynb`` generamos un dataset que cuenta con el customerid y la predicción de si va a ser capaz de devolver el préstamo o no. Esta predicción final se encuentra en ``work/data/output/test_prediction.csv``. 
