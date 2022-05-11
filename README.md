@@ -120,6 +120,12 @@ En primer lugar para realizar el Feature importances tenemos que descargar varia
 En segundo lugar, realizaremos el modelo en xgboost el cual nos servirá para hayar las 10 variables más importantes y posteriormente crear un dataset con esas variables, dataset el cual utilizaremos para hacer el modelo final.
 
 ### PCA
+Aplicamos Principal Component Analysis (PCA) tras comprobar el gran número de variables predictoras, y la alta multicolinealidad de esta forma mejorando los resultados de nuestros modelos, así como el tiempo de entrenamiento, haciendo el modelo más escalable en el largo plazo. 
+
+Para ello, primero normalizamos las variables para reducir la varianza a 1 y la media a 0, así estandarizamos la escala de las variables, evitando posibles sesgos. Una vez preparado el dataset, extraemos un dataset con 50 variables generadas por el PCA, que explican más del 80% de la varianza.
+
+Posteriormente creamos un data set con las variables creadas por esta técnica, y aplicaremos los modelos predictivos.
+
 
 ## 3. Entrenamiento y modelo final
 
